@@ -19,12 +19,16 @@ module TelegramBot
         chat_id: chat.id
       }
 
-      unless keyboard.empty?
-        hash[:reply_markup] = {
-          keyboard: keyboard,
-          one_time_keyboard: true
-        }.to_json
-      end
+      hash[:reply_markup] = if keyboard.flatten.empty?
+                              {
+                                hide_keyboard: true
+                              }
+                            else
+                              {
+                                keyboard: keyboard,
+                                one_time_keyboard: true
+                              }
+                            end.to_json
 
       hash
     end
