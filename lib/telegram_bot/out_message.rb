@@ -26,7 +26,8 @@ module TelegramBot
                             else
                               {
                                 keyboard: keyboard,
-                                one_time_keyboard: true
+                                one_time_keyboard: true,
+                                resize_keyboard: true
                               }
                             end.to_json
 
